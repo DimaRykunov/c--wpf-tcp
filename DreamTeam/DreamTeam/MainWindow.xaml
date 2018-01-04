@@ -1,0 +1,126 @@
+﻿<Window x:Class="DreamTeam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DreamTeam"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="270" Width="300" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Setter.Value="White"/>
+            <Setter Property="Foreground" Setter.Value="#FF5A5050"/>
+            <Setter Property="BorderThickness" Setter.Value="1"/>
+            <Setter Property="BorderBrush" Setter.Value="#0065ab"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#0065ab" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    CornerRadius="10" Opacity="1">
+                                <Grid>
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                                  Foreground="{TemplateBinding Foreground}" 
+                                                  BorderThickness="0" IsTabStop="False" 
+                                                  Margin="0" Padding="{TemplateBinding Padding}"/>
+                                    <Border Margin="0,0,0,-1" 
+                                            BorderBrush="#0065ab" 
+                                            BorderThickness="0" 
+                                            CornerRadius="1"/>
+                                    <Border Margin="0,0,0,-1" 
+                                            BorderBrush="#0065ab" 
+                                            BorderThickness="0" 
+                                            CornerRadius="1"/>
+                                    <Border x:Name="Outer"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate TargetType="Button" x:Key="btn" >
+            <Border CornerRadius="15"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}">
+                <Border.Background>
+                    <SolidColorBrush x:Name="BorderColor" Color="#0079cb" />
+                </Border.Background>
+                <ContentControl Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Content="{TemplateBinding Content}" 
+                                Foreground="White"/>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup Name="CommonStates">
+                        <VisualState Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimation SpeedRatio="4" Storyboard.TargetName="BorderColor"
+                                    Storyboard.TargetProperty="Color" To="#0065ab" />
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState Name="Normal">
+                            <Storyboard>
+                                <ColorAnimation SpeedRatio="4"  Storyboard.TargetName="BorderColor"
+                                    Storyboard.TargetProperty="Color" To="#0079cb" />
+                            </Storyboard>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused"  Value="True">
+                    <Setter Property="Background" Value="Red"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid x:Name="Grid1">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Логин:" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30 15"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Пароль:" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30 15"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="IP:" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30 15"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="Порт:" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30 15"/>
+
+        <TextBox x:Name="textBoxLogin" Text="admin" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="5"/>
+        <TextBox x:Name="textBoxPassword" Text="12345" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="5"/>
+        <TextBox x:Name="TextBoxIP" Text="127.0.0.1" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="5"/>
+        <TextBox x:Name="TextBoxPort" Text="8888" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="5"/>
+
+        <Button Content="Войти" Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="3" Template="{StaticResource btn}" Click="Button_Click"/>
+        <Button Content="Регистрация" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="4" Template="{StaticResource btn}" Click="Button_Click_1"/>
+    </Grid>
+</Window>
