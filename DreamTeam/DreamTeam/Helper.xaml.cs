@@ -35,8 +35,8 @@ namespace DreamTeam
             try
             {
                 MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("dima.rikunov@mail.ru");
-                mail.To.Add(new MailAddress("dmitriy.viktorovich@hotmail.com"));
+                mail.From = new MailAddress("от кого");
+                mail.To.Add(new MailAddress("кому"));
                 mail.Subject = caption.Text;
                 mail.Body = message.Text;
                 //mail.IsBodyHtml = true;
@@ -44,7 +44,7 @@ namespace DreamTeam
                 client.Host = "smtp.mail.ru";
                 client.Port = 587;
                 client.EnableSsl = true;
-                client.Credentials = new NetworkCredential("dima.rikunov@mail.ru", "3366698CD_e");
+                client.Credentials = new NetworkCredential("Почта", "Пароль");
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Send(mail);
                 //mail.Dispose();
